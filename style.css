@@ -7,3 +7,13 @@ h1{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+#search{
+    border:solid;
+    padding-left: 20px;
+}
+
+#current-weather{
+    border:solid;
+
+}
