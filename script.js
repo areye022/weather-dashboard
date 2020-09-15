@@ -12,6 +12,7 @@ function getLocalCoordinates() {
     navigator.geolocation.getCurrentPosition(locationRetrieved); 
 }
 
+// getting locations based on lat and lon
 function locationRetrieved(position) {
     //Save latitude and longitude that are retrieved from getCurrentPosition. 
     latitude = position.coords.latitude; 
@@ -25,20 +26,48 @@ function locationRetrieved(position) {
 }
 
 function requestCurrent(event) {
-    //This function makes a call to the Zomato API to retrieve locations. 
+    //This function makes a call to the weather API to retrieve locations. 
 
     //Set up the weather API request. 
     // var weatherAPI = 'ab855531e2a84587938c2262d8863c07'
-    var weatherQuery = 'http://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&APPID=ab855531e2a84587938c2262d8863c07'; 
-
-    //Add code here to see if search input was used. If so, add search keywords to the query string. 
+    var localQuery = 'http://api.openweathermap.org/data/2.5/forecast?lat='+latitude+'&lon='+longitude+'&APPID=ab855531e2a84587938c2262d8863c07'; 
 
     //Make API call.
     $.ajax({
-        url: weatherQuery,
+        url: localQuery,
         method: "GET"
     }).then(function(response){
-        console.log(response.list[0])
+        console.log(response)
+
+        // creating a new div to hold current weather
+        var currentWeather=document.createElement('div')
+        currentWeather.textContent=response.list[0];
+        var currentInput=document.getElementById('#current-weather')
+
+        // having issues appending to the page
+        // currentInput.append(currentWeather)
     })
     
+    // need to add button to that will append the current weather to the page
 };
+
+// function to search a specific city
+function weatherSearch(){
+
+    var search=$('#keyTerm').val();
+    
+    var searchQuery='http://api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
+
+    $.ajax({
+        url: searchQuery,
+        method: "GET"
+    }).then(function(res){
+        console.log(res)
+})
+    console.log(search);
+}
+// creating onclick for weathersearch function/search button
+$('#searchBtn').on('click',function(event){
+    event.preventDefault();
+    weatherSearch();
+    })
