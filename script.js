@@ -37,22 +37,50 @@ function requestCurrent(event) {
         url: localQuery,
         method: "GET"
     }).then(function(response){
-        console.log(response.city.name)
+        console.log(response)
 
+        // onclick event for current location. Will append info only when clicked 
     $('#current').on('click',function(event){
         event.preventDefault();
-            
-    
 
+    for (results=0;results<5;results++){
+
+        // to append current city name
     var currentWeather=document.querySelector('#current-weather')
     var currentCity=document.createElement('h3');
     currentCity.textContent=response.city.name;
     currentWeather.append(currentCity);
+
+    // to append date
+    var date=document.createElement('h3');
+    date.textContent=response.list[results].dt_txt;
+    currentWeather.append(date);
+
+    // to append current city weather
+    var main=document.createElement('h3');
+
+    // when i put results in here it shows as undefined, why?
+    main.textContent=response.list[0].weather[0].description;
+    currentWeather.append(main);
+
+    // to append current city temp
+    var currentTemp=document.createElement('h3');
+    currentTemp.textContent=(response.list[results].main.temp - 273.15) * 1.8 + 32
+    currentWeather.append(currentTemp);
+
+    // to append current humidity
+    var humidity=document.createElement('h3');
+    humidity.textContent='Humidity ' + response.list[results].main.humidity;
+    currentWeather.append(humidity);
+
+    // to append current windspeed
+    var windSpeed=document.createElement('h3');
+    windSpeed.textContent='Wind Speed '+ response.list[results].wind.speed;
+    currentWeather.append(windSpeed);
+    }
+    // having issues finding uv index
 })
     })
-    
-    // need to add button to that will append the current weather to the page
-    // it should not append until we press the button get current weather
 };
 
 // when we click on current location button, the local city name will append to the #current weather div
