@@ -1,3 +1,8 @@
+// TODO
+// add forecast for following 5 days, currently only have current day loading
+// add weather icons
+// create local storage so the previous searches save
+
 //these will be used to define our current location.
 var latitude; 
 var longitude; 
@@ -46,6 +51,13 @@ function requestCurrent(event) {
     currentCity.textContent=response.name;
     currentWeather.append(currentCity);
 
+    // adding icons
+    // if (response.weather[0].main===cloud){
+    //     var icon=document.createElement('img');
+    //     icon.setAttribute
+    //     $("#image-div").html("<img src='https://i1.wp.com/snotapwi.com/wp-content/uploads/2017/03/PBJ-Sandwiches.jpg?resize=590%2C368&ssl=1' />");
+    // }
+
     // to append date
     var date=document.createElement('h5');
     date.textContent=response.dt;
@@ -58,7 +70,7 @@ function requestCurrent(event) {
 
     // to append current city temp
     var currentTemp=document.createElement('h5');
-    currentTemp.textContent='Temperature: '+(response.main.temp - 273.15) * 1.8 + 32
+    currentTemp.textContent='Temperature: '+ Math.round((response.main.temp- 273.15) * (9 / 5) + 32)
     currentWeather.append(currentTemp);
 
     // to append current humidity
@@ -109,7 +121,7 @@ function weatherSearch(){
     
         // to append current city temp
         var searchTemp=document.createElement('h5');
-        searchTemp.textContent='Temperature: '+(res.main.temp - 273.15) * 1.8 + 32
+        searchTemp.textContent='Temperature: '+Math.round((res.main.temp - 273.15) * (9/5) + 32)
         searchWeather.append(searchTemp);
     
         // to append current humidity
