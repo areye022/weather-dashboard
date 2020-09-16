@@ -2,6 +2,7 @@
 // add forecast for following 5 days, currently only have current day loading
 // add weather icons
 // create local storage so the previous searches save
+// fix dates
 
 //these will be used to define our current location.
 var latitude; 
@@ -52,11 +53,13 @@ function requestCurrent(event) {
     currentWeather.append(currentCity);
 
     // adding icons
-    // if (response.weather[0].main===cloud){
-    //     var icon=document.createElement('img');
-    //     icon.setAttribute
-    //     $("#image-div").html("<img src='https://i1.wp.com/snotapwi.com/wp-content/uploads/2017/03/PBJ-Sandwiches.jpg?resize=590%2C368&ssl=1' />");
-    // }
+    if (response.weather[0].main==='Haze'){
+        $("#image-div").html("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3bjRqzFjxkmvAWL3ff72-tH8UidJ4UxFzmQ&usqp=CAU' height=200px width:200px />");
+    }
+    else if(response.weather[0].main==='Clouds'){
+        $("#image-div").html("<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3bjRqzFjxkmvAWL3ff72-tH8UidJ4UxFzmQ&usqp=CAU' height=200px width:200px />");
+
+    }
 
     // to append date
     var date=document.createElement('h5');
@@ -133,8 +136,6 @@ function weatherSearch(){
         var swindSpeed=document.createElement('h5');
         swindSpeed.textContent='Wind Speed: '+ res.wind.speed;
         searchWeather.append(swindSpeed);
-        
-    
     
 })  
 };
