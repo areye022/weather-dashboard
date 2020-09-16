@@ -37,19 +37,30 @@ function requestCurrent(event) {
         url: localQuery,
         method: "GET"
     }).then(function(response){
-        console.log(response)
+        console.log(response.city.name)
 
-        // creating a new div to hold current weather
-        var currentWeather=document.createElement('div')
-        currentWeather.textContent=response.list[0];
-        var currentInput=document.getElementById('#current-weather')
+    $('#current').on('click',function(event){
+        event.preventDefault();
+            
+    
 
-        // having issues appending to the page
-        // currentInput.append(currentWeather)
+    var currentWeather=document.querySelector('#current-weather')
+    var currentCity=document.createElement('h3');
+    currentCity.textContent=response.city.name;
+    currentWeather.append(currentCity);
+})
     })
     
     // need to add button to that will append the current weather to the page
+    // it should not append until we press the button get current weather
 };
+
+// when we click on current location button, the local city name will append to the #current weather div
+$('#current').on('click',function(event){
+    event.preventDefault();
+        
+})
+
 
 // function to search a specific city
 function weatherSearch(){
@@ -65,9 +76,12 @@ function weatherSearch(){
         console.log(res)
 })
     console.log(search);
+    
 }
 // creating onclick for weathersearch function/search button
 $('#searchBtn').on('click',function(event){
     event.preventDefault();
     weatherSearch();
+    
+    
     })
