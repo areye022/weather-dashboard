@@ -1,8 +1,8 @@
 // TODO
 // add forecast for following 5 days, currently only have current day loading
-// add weather icons
 // create local storage so the previous searches save
 // fix dates
+// clear input when searching current location, already did this for searched locations
 
 //these will be used to define our current location.
 var latitude; 
@@ -45,7 +45,7 @@ function requestCurrent(event) {
         // onclick event for current location. Will append info to page only when clicked 
     $('#current').on('click',function(event){
         event.preventDefault();
-
+        
         // to append current city name
     var currentWeather=document.querySelector('#current-weather')
     var currentCity=document.createElement('h4');
@@ -169,11 +169,14 @@ function weatherSearch(){
         searchWeather.append(swindSpeed);
     
 })  
+
 };
 
 // creating onclick for weathersearch function/search button
 $('#searchBtn').on('click',function(event){
     event.preventDefault();
+    var searchWeather=document.querySelector('#searched-city')
+    searchWeather.innerHTML="",
     weatherSearch();
     
     
