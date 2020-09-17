@@ -73,8 +73,10 @@ function requestCurrent(event) {
     }
 
     // to append date
-    var date=document.createElement('h5');
-    date.textContent=response.dt;
+    var date = document.createElement("h5");
+    var now = moment().format("MMMM Do YYYY");
+    // updating the text in the html
+    date.innerHTML = now
     currentWeather.append(date);
 
     // to append current city weather
@@ -144,9 +146,11 @@ function weatherSearch(){
 
     // to append date
     // date doesn't come out correctly , might just use moment();
-        var sdate=document.createElement('h5');
-        sdate.textContent=res.dt;
-        searchWeather.append(sdate);
+    var sdate = document.createElement("h5");
+    var snow = moment().format("MMMM Do YYYY");
+    // updating the text in the html
+    sdate.innerHTML = snow
+    searchWeather.append(sdate);
     
         // to append current city weather
         var smain=document.createElement('h5');
