@@ -10,6 +10,7 @@ h1{
 
 #search{
     padding-left: 20px;
+    display:inline-block
 }
 
 #current-weather{
