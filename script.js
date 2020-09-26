@@ -32,9 +32,9 @@ function weatherSearch(){
 
     var counter=0;
     var search=$('#keyTerm').val();
-    var searchQuery='http:api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
+    var searchQuery='https:api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
     // maybe create its own function for this api call?
-    var uvQuery='http://api.openweathermap.org/data/2.5/uvi/history?appid={appid}&lat='+latitude+'&lon='+longitude+'&cnt=5&start={start}&end={end}'
+    var uvQuery='https://api.openweathermap.org/data/2.5/uvi/history?appid={appid}&lat='+latitude+'&lon='+longitude+'&cnt=5&start={start}&end={end}'
 
     // API call
     $.ajax({
