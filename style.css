@@ -1,5 +1,5 @@
 h1{
-    background-color: navy;
+    background-color: powderblue;
     font-size: larger;
     text-align: center;
     color:white;
@@ -7,6 +7,21 @@ h1{
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 50px;
+}
+
+body{
+    background-image: url("mckayla-crump-AjmBvSj_2IE-unsplash.jpg");
+    background-size: cover;
+}
+
+.jumbotron {
+    font-weight: bolder;
+    opacity: 40%;
+}
+
+.card{
+    text-align: center;
+    opacity: 85%;
 }
 
 #search{

@@ -30,7 +30,7 @@ var prevSearches=[];
 // function to search a specific city
 function weatherSearch(){
 
-    var counter=1;
+    var counter=0;
     var search=$('#keyTerm').val();
     var searchQuery='https://api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
     // maybe create its own function for this api call?
@@ -93,10 +93,12 @@ var searchWeather=document.querySelector('#searched-city');
     var swindSpeed=document.createElement('h4');
     swindSpeed.textContent='Wind Speed: '+ res.list[0].wind.speed;
     searchWeather.append(swindSpeed);
+
+    // for loop to display next 4 days
     for (var i=1;i<res.list.length;i++){
         console.log(res);
 
-    if (res.list[i].dt_txt.indexOf("9:00") !== -1 && counter<5){
+    if (res.list[i].dt_txt.indexOf("9:00") !== -1 && counter<4){
         counter++
         console.log(res.list[i].dt_txt)
 
