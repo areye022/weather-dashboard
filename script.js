@@ -32,7 +32,7 @@ function weatherSearch(){
 
     var counter=0;
     var search=$('#keyTerm').val();
-    var searchQuery='https:api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
+    var searchQuery='https://api.openweathermap.org/data/2.5/forecast?q='+search+'&appid=ab855531e2a84587938c2262d8863c07'
     // maybe create its own function for this api call?
     var uvQuery='https://api.openweathermap.org/data/2.5/uvi/history?appid={appid}&lat='+latitude+'&lon='+longitude+'&cnt=5&start={start}&end={end}'
 
@@ -41,12 +41,29 @@ function weatherSearch(){
         url: searchQuery,
         method: "GET"
     }).then(function(res) {
-        for (var i=0;i<res.list.length;i++){
+        for (var i=1;i<res.list.length;i++){
             console.log(res);
 
     if (res.list[i].dt_txt.indexOf("9:00") !== -1 && counter<5){
         counter++
         console.log(res.list[i].dt_txt)
+
+    var card=$('<div>');
+    card.addClass('card', 'mx-2');
+    var cardBody=$('<div>');
+    cardBody.addClass('card-body');
+
+    var heading=$('<h5>');
+    heading.addClass('card-title');
+    heading.text((new Date(res.list[i].dt_txt).toLocaleDateString()))
+    // create p tags for other inputs 
+
+    cardBody.append(heading);
+    // append all other inputs
+    card.append(cardBody);
+    
+    $('#forecast-output').append(card);
+
 
      // to append city name
     var searchWeather=document.querySelector('#searched-city');

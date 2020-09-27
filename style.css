@@ -6,10 +6,11 @@ h1{
     height:80px;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-size: 50px;
 }
 
 #search{
-    padding-left: 20px;
+    text-align: center;
     display:inline-block
 }
 
@@ -21,4 +22,5 @@ h1{
 .image-styling{
     height:200px;
     width:200px;
+    text-align: center;
 }

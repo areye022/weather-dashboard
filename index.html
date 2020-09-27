@@ -15,20 +15,33 @@
     <h1>Weather Dashboard</h1>
 
     <!-- search section -->
-    <section>
+    
+    <section class='container'>
         <div class='row'>
-            <div class="col-md-4" id='search'>
+            <div class="col" id='search'>
                 <h2>Search for a City</h2>
                 <input type='search' id='keyTerm'>
                 <button id='searchBtn'>Enter</button>
                 
             </div>
+        </div>    
+    </section>   
 
+    <section class='jumbotron'>    
+        <div>
             <div class="col-md-8" id='current-weather'>
                 <div id='searched-city'></div>
                 <div id="image-div"></div>
             
             </div>
+        </div>
+    </section>
+
+    <section class='container d-flex'>
+        <div class='row mx-auto ' id='forecast-output'>
+
+        </div>
+    </section>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src='script.js'></script>
 </body>
