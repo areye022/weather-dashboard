@@ -14,4 +14,4 @@ When a city is searched, the user will be able to see the current temperature, h
 ### Features
 * Utilized Openweathermap API to retrieve weather data and forecasts.. 
 * Utilizes Bootstrap features such as jumbotron, cards, containers, etc.   
-* Fynamically created HTML elements to create a clean HTML page. 
+* Dynamically created HTML elements to create a clean HTML page. 
